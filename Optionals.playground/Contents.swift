@@ -18,47 +18,31 @@ if (p1Username != nil) { //usamos para evitar erros
 
 //COMO SWIFT É UMA LINGUAGEM SEGURA, DEVEMOS TER MUITO CUIDADO AO UTILIZAMOS ? E !, JÁ QUE ELES FORAM DESENVOLVIDOS PENSANDO NA SEGURANÇA DA LINGUAGEM!!!!
 
-//Don't change this
-var studentsAndScores = ["Amy": Int.random(in: 1 ... 100), "James": Int.random(in: 1 ... 100), "Helen": Int.random(in: 1 ... 100)]
+//MARK: - UNWRAPPING
 
-func highestScore(scores: [String: Int]) {
-  
-  //Write your code here.
-  if (scores["Amy"]! > scores["James"]! && scores["James"]! > scores["Helen"]!) {
-    print("Amy: \(scores["Amy"]!)")
-  } else if (scores["Amy"]! < scores["James"]! && scores["James"]! > scores["Helen"]!) {
-    print("James: \(scores["James"]!)")
-  } else if (scores["Amy"]! < scores["James"]! && scores["James"]! < scores["Helen"]!) {
-    print("Helen: \(scores["Helen"]!)")
-  } else {
-    print("Error")
-  }
-    
+//if let
+if let safeName = p1Username {
+    print("Name: \(safeName)")
+} else {
+    print("Name not found")
 }
 
-highestScore(scores: studentsAndScores)
+let date: Date? = Date()
 
-func highestScore2(scores: [String: Int]) {
-  
-  //Write your code here.
-  print(scores.values.max()!)
-    
+//guard let
+guard let safeTest = date else {
+    print("stop execution and 'return'!!")
+    throw NSError()
 }
 
-highestScore2(scores: studentsAndScores)
+print(safeTest)
 
-func highestScore3(scores: [String: Int]) {
-  
-  //Write your code here.
-    var maior = 0
-    for (key, value) in scores {
-        if maior < value {
-            maior = value
-        }
-        print("\(key) = \(value)")
-    }
-    print("Maior: \(maior)")
-}
+//foce unwrapping
+var sena: String?
+sena = "a"
+print(sena!.count)
 
-highestScore3(scores: studentsAndScores)
-
+//nill operator
+var number: String?
+number = "3"
+print(number?.first ?? "0")
